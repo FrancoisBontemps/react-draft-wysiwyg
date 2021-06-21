@@ -5,7 +5,7 @@ import { RichUtils } from 'draft-js';
 
 import LayoutComponent from './Component';
 
-class BlockType extends Component {
+class DefaultBlockType extends Component {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
     editorState: PropTypes.object,
@@ -105,6 +105,11 @@ class BlockType extends Component {
       />
     );
   }
+}
+
+const BlockType = (props) => {
+  const BlockTypeComponent = (props.config && props.config.component) || DefaultBlockType;
+  return <BlockTypeComponent {...props} />
 }
 
 export default BlockType;
